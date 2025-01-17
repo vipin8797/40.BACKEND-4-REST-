@@ -1,0 +1,19 @@
+<%-include('includes/layout.ejs')%>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>ALL Posts</h1>
+    <hr>
+   <% for(post of posts){%>
+      <div>
+        <h2><b>username: </b>@<%=post.username%></h2>
+        <p><b>content: </b><%=post.content%></p>
+        <hr>
+      </div>
+    <%}%>
+    
+</body>
+</html>

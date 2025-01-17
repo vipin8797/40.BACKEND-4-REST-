@@ -19,7 +19,25 @@ app.use(express.static(path.join(__dirname,"public")));
 
 //***************************************************************** */
 
-
+//Array for database
+let posts = [
+    {
+        username:"hellopy",
+        content:"I love Coading,"
+    },
+    {
+        username:"deltapy",
+        content:"Please Mentain Concistency."
+    },
+    {
+        username:'coolGye',
+        content:"I am a Coll Guy.",
+    },
+    {
+        username:"chillGuye",
+        content:"I am a Chill Guy."
+    }
+];
 
 
 
@@ -27,6 +45,11 @@ app.use(express.static(path.join(__dirname,"public")));
 
 app.get('/',(req,res)=>{
     res.send("Server is Working well.");
+})
+
+//Index Route
+app.get('/posts',(req,res)=>{
+    res.render('index.ejs',{posts});
 })
 
 
