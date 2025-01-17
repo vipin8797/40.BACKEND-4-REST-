@@ -16,30 +16,29 @@ app.set("views",path.join(__dirname,"views"));
 //Default path for public folder(Serving Static files);
 app.use(express.static(path.join(__dirname,"public")));
 
+//Requiring UUId for random Id
+const { v4: uuidv4 } = require('uuid');
 
 //***************************************************************** */
 
 //Array for database
 let posts = [
     {
-        id:'1a',
+        id:uuidv4(),
         username:"hellopy",
         content:"I love Coading,"
     },
     {
-        id:'2a',
+        id:uuidv4(),
         username:"deltapy",
         content:"Please Mentain Concistency."
     },
-    {id:'3a',
+    {
+        id:uuidv4(),
         username:'coolGye',
         content:"I am a Coll Guy.",
     },
-    {
-        id:'4a',
-        username:"chillGuye",
-        content:"I am a Chill Guy."
-    }
+    
 ];
 
 
@@ -64,7 +63,8 @@ app.get("/posts/new",(req,res)=>{
 //Post req for New Content
 app.post('/posts',(req,res)=>{
     const {username,content} = req.body;
-    posts.push({username,content});
+    const id = uuidv4();
+    posts.push({id,username,content});
     res.redirect('/posts');
 })
 
