@@ -19,6 +19,9 @@ app.use(express.static(path.join(__dirname,"public")));
 //Requiring UUId for random Id
 const { v4: uuidv4 } = require('uuid');
 
+//Requiring Method Override
+const methodOverride = require('method-override')
+app.use(methodOverride('_method'));
 //***************************************************************** */
 
 //Array for database
@@ -85,8 +88,22 @@ app.get('/posts/:id',(req,res)=>{
 })
 
 
+//Get req for Edit form
+app.get("/posts/:id/edit",(req,res)=>{
+    const {id} = req.params;
+    const postData = posts.find((p) => id === p.id);
+    res.render('edit.ejs',{postData});
+});
 
 
+
+app.patch("/posts/:id/edit",(req,res)=>{
+       
+       const {id} = req.params;
+       const post = posts.find((p) => id === p.id);
+       post.content = req.body.content;
+       res.redirect('/posts');
+});
 
 
 //*************************************************** */
