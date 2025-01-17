@@ -22,18 +22,21 @@ app.use(express.static(path.join(__dirname,"public")));
 //Array for database
 let posts = [
     {
+        id:'1a',
         username:"hellopy",
         content:"I love Coading,"
     },
     {
+        id:'2a',
         username:"deltapy",
         content:"Please Mentain Concistency."
     },
-    {
+    {id:'3a',
         username:'coolGye',
         content:"I am a Coll Guy.",
     },
     {
+        id:'4a',
         username:"chillGuye",
         content:"I am a Chill Guy."
     }
@@ -66,6 +69,20 @@ app.post('/posts',(req,res)=>{
 })
 
 
+
+//Get req for show post
+app.get('/posts/:id',(req,res)=>{
+    const {id} = req.params;
+
+    const postData = posts.find((p) => id === p.id);
+    if(postData){
+        res.render('show.ejs',{postData});
+    }else{
+        res.render('wrong Id');
+    }
+        
+   
+})
 
 
 
