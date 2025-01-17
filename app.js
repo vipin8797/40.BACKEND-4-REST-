@@ -106,6 +106,15 @@ app.patch("/posts/:id/edit",(req,res)=>{
 });
 
 
+//Delet Req
+app.delete('/posts/:id/delete',(req,res)=>{
+    const {id} = req.params;
+    posts = posts.filter((p) => id != p.id);
+    res.redirect('/posts');
+    
+    
+})
+
 //*************************************************** */
 const port = 3000;
 app.listen(port,()=>{
