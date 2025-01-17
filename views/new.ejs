@@ -1,0 +1,13 @@
+<%-include('includes/layout.ejs')%>
+
+<h1>Create New post</h1>
+<br>
+<form method="POST" action="/posts">
+    <input placeholder="Enter the @username" name="username">
+    <br>
+    <br>
+    <textarea placeholder="Write content here" name="content"></textarea>
+    <br>
+    <br>
+    <button type="submit">Submit</button>
+</form>

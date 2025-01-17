@@ -1,0 +1,24 @@
+<%-include('includes/layout.ejs')%>
+
+<body>
+
+    <h1>Qora</h1>
+    <hr>
+   <% for(post of posts){%>
+      <div class="div">
+        <h2 ><b>username: </b>@<%=post.username%></h2>
+        <p><b>content: </b><%=post.content%></p>
+        
+        <p><a href="http://localhost:3000/posts/<%=post.id%>">See the Post</a></p>
+        <p><a href="http://localhost:3000/posts/<%=post.id%>/edit">Edit</a></p>
+        <form action="http://localhost:3000/posts/<%=post.id%>/delete?_method=DELETE" method="post">
+            <button type="submit">Delete</button>
+        </form>
+
+        
+        <hr>
+      </div>
+    <%}%>
+    <button><a href="/posts/new">Create New</a></button>
+</body>
+</html>

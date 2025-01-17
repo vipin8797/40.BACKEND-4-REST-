@@ -1,0 +1,17 @@
+<%-include('includes/layout.ejs')%>
+
+<body>
+    <h1>Edit the Post</h1>
+        <div>
+            <h2><b>Id: </b>@<%=postData.id%></h2>
+            <h2><b>username: </b>@<%=postData.username%></h2>
+    <form action="http://localhost:3000/posts/<%=postData.id%>/edit?_method=PATCH" method="post">
+        <h2>content:</h2>
+        <input name="content" value="<%=postData.content%>">
+        <button type="submit">save change</button>
+    </form>
+            <hr>
+          </div>
+        
+    </body>
+    </html>
