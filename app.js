@@ -53,6 +53,17 @@ app.get('/posts',(req,res)=>{
 })
 
 
+//Get req for New Content
+app.get("/posts/new",(req,res)=>{
+    res.render("new.ejs");
+})
+
+//Post req for New Content
+app.post('/posts',(req,res)=>{
+    const {username,content} = req.body;
+    posts.push({username,content});
+    res.redirect('/posts');
+})
 
 
 
